@@ -23,7 +23,7 @@ describe('<UserForm />', () => {
     
     it("Submit button with jest function", () => {
         const click = jest.fn();
-        const { getByTest } = render.( <UserForm submit={click} /> );
+        const { getByText } = render( <UserForm submit={click} /> );
         const subBtn = getByText(/submit/i);
         fireEvent.click(subBtn);
         expect(click).toBeCalled();       

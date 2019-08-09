@@ -14,13 +14,17 @@ class App extends React.Component {
  
   render () {
     return (
+    
       <div className="App">
-          <h1>Your mom!</h1>
+        <header>
+          <h4>Some Recipe Thing</h4>
+        </header> 
+        <div className="body">
           <div><UserForm /></div>
           <div>
             <PeepsDisplay />
-
           </div>
+        </div>
       </div>
     );
   }

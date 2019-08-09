@@ -19,14 +19,16 @@ const PeepsDisplay = () => {
 
     return (
         <div>
-            <h3>Foods</h3>
+            <h3>Former Humans who are now Foods</h3>
             {console.log("peeps",peeps)}
-            {peeps && peeps.map(peep => (
-                <div>
-                    <p>Dish Name: {peep.name}</p>
-                    <p>Course: {peep.course}</p>
-                </div>
-            ))}
+            <div className="dishes">
+                {peeps && peeps.map(peep => (
+                    <div className="dish">
+                        <p>Dish Name: {peep.name}</p>
+                        <p>Course: {peep.course}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

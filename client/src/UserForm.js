@@ -8,8 +8,9 @@ const UserForm = ({errors, touched, values, handleSubmit}) => {
 
     
     return (
-        <div>
-            <h2>User Form Goes here</h2>
+        <div className="user-form">
+            <h2>Would you like to be transformed into a food dish by an API?</h2>
+            <h3>Sign up here:</h3>
             <Form> 
                 <Field type="text" name="username" placeholder="Username" />
                 {touched.username && errors.username && (
