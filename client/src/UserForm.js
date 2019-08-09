@@ -5,29 +5,25 @@ import * as Yup from 'yup';
 
 
 
-class UserForm extends React.Component {
-    constructor() {
-        super();
-    }
-    render() {
+const UserForm = ({errors, touched, values, handleSubmit, status}) => {
+
         return (
             <div>
                 <h2>User Form Goes here</h2>
                 <Form> 
                     <Field type="text" name="username" placeholder="Username" />
-                    {/* {touched.name && errors.name && (
-                        <p className="error">{errors.name}</p>
-                    )} */}
+                    {touched.username && errors.username && (
+                        <p className="error">{errors.username}</p>
+                    )}
                     <Field type="password" name="password" placeholder="Password" />
-                    {/* {touched.password && errors.password && (
+                    {touched.password && errors.password && (
                         <p className="error">{errors.password}</p>
-                    )} */}
+                    )}
                      <button type="submit">Submit</button>
                 </Form>
 
             </div>
         )
-    }    
 }    
 
 const FormikUserForm = withFormik({
@@ -38,7 +34,7 @@ const FormikUserForm = withFormik({
         };
     },
     validationSchema: Yup.object().shape({
-        name: Yup.string().required("Username is required"),
+        username: Yup.string().required("Username is required"),
         password: Yup.string().min(6,"Password must be at least 6 characters").required("Password is required"),
     }),
 
