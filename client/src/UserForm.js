@@ -4,26 +4,26 @@ import axios from "axios";
 import * as Yup from 'yup';
 
 
+const UserForm = ({errors, touched, values, handleSubmit}) => {
 
-const UserForm = ({errors, touched, values, handleSubmit, status}) => {
-
-        return (
-            <div>
-                <h2>User Form Goes here</h2>
-                <Form> 
-                    <Field type="text" name="username" placeholder="Username" />
-                    {touched.username && errors.username && (
-                        <p className="error">{errors.username}</p>
-                    )}
-                    <Field type="password" name="password" placeholder="Password" />
-                    {touched.password && errors.password && (
-                        <p className="error">{errors.password}</p>
-                    )}
-                     <button type="submit">Submit</button>
-                </Form>
-
-            </div>
-        )
+    
+    return (
+        <div>
+            <h2>User Form Goes here</h2>
+            <Form> 
+                <Field type="text" name="username" placeholder="Username" />
+                {touched.username && errors.username && (
+                    <p className="error">{errors.username}</p>
+                )}
+                <Field type="password" name="password" placeholder="Password" />
+                {touched.password && errors.password && (
+                    <p className="error">{errors.password}</p>
+                )}
+                    <button type="submit">Submit</button>
+            </Form>
+  
+        </div>
+    )
 }    
 
 const FormikUserForm = withFormik({
@@ -38,16 +38,13 @@ const FormikUserForm = withFormik({
         password: Yup.string().min(6,"Password must be at least 6 characters").required("Password is required"),
     }),
 
-    handleSubmit(values, { setStatus }) {
+    handleSubmit(values) {
         axios
             .post("http://localhost:5000/api/register", values)
-            // .then(res => console.log("res", res.data.name))
-            .then(res => {
-                console.log("response", res)
-                // setStatus(res.data);
-            })
+            .then(res => console.log("POST res", res.data))
             .catch(err => console.log("Error", err));
     }
+
 })(UserForm);
 
 export default FormikUserForm;
